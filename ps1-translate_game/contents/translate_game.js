@@ -13,5 +13,17 @@ $(function() {
 	get_lang_to = function(){
 		return lang_to;
 	};
+	
+	random_word = function(){
+		var element_count = 0;
+		for (e in current_dict) { element_count++; }
+		var j = Math.floor(Math.random()*element_count);
+		for (var i in current_dict){
+			if (j == 0){
+				return current_dict[i];
+			}
+			j = j-1;
+		}
+	};
 
 });

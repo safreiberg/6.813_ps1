@@ -47,7 +47,15 @@
     		</tr>
     		<tr>
     			<td>
-    				<span style="color:black">espejo</span>
+    				<div class="from_word">
+    				<script>
+    				$(document).ready(function()
+    					{
+    						$("div.from_word").html('<span style="color:black">'+random_word()+'</span>');
+    					}
+    				);
+    				</script>
+    				</div>
     			</td>
     			<td>
     				<input type="text" size="8">
