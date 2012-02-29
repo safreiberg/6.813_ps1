@@ -23,17 +23,10 @@
     	<h1>
     	</h1>
     	<script>
-    		$(document).ready(function()
-    			{
-    				$("h1:first").html('Translate from <span style="color:black">'+get_lang_from()+
-  					'</span> to <span style="color:black">'+get_lang_to()+'</span>');
-    			}
-    		);
-    		
+    				
     		$(document).ready(function()
         			{
-    					random_word();
-    					document.getElementById('guess').focus()
+    					start();
         			}
         		);
     	</script>
@@ -62,7 +55,8 @@
     				<input id="guess" type="text" size="8">
     			</td>
     			<td>
-    				<button onclick="see_answer()" type="button">See Answer</button>
+    				<button onclick="see_answer(document.getElementById('guess').value)" 
+    				id="submit_button" type="button">See Answer</button>
     			</td>
     		</tr>
     			<td>
@@ -72,28 +66,19 @@
     		</tr>
     		<tr>
     			<td>
-    				<span style="color:blue">calabaza</span>
+    				<div id="first_question" class="first_question"></div>
     			</td>
     			<td>
-    				<span style="color:blue">pumpkin</span>
+    				<div id="first_answer" class="first_answer"></div>
     			</td>
     			<td>
-					<span class="ui-icon ui-icon-check"></span>
-    			</td>
-    		</tr>
-    		
-    		<tr>
-    			<td>
-    				<span style="color:red">postmodernidad</span>
-    			</td>
-    			<td>
-    				<span style="color:red; text-decoration: line-through;">phone</span>
-    			</td>
-    			<td>
-    				<span style="color:red">postmodernism</span>
+					<div id="first_correct" class="first_correct"></div>
     			</td>
     		</tr>
     	</table>
+    	
+    	<div id="rest" class="rest"></div>
+    	
     </div>
     
   </body>

@@ -3,34 +3,106 @@
 $(function() {
 	var lang_to = "English";
 	var lang_from = "Spanish";
+	var actual;
+	var rest = '';
 	var current_dict = dicts[lang_to][lang_from]; // keys: words in @lang_to,
-													// values: corresponding
-													// words in @lang_from
+	// values: corresponding
+	// words in @lang_from
 
-	get_lang_from = function(){
+	/**
+	 * Getters for lang_to and lang_from
+	 */
+	get_lang_from = function() {
 		return lang_from;
 	};
-	get_lang_to = function(){
+	get_lang_to = function() {
 		return lang_to;
 	};
-	
-	random_word = function(){
+
+	random_word = function() {
 		var element_count = 0;
-		for (e in current_dict) { element_count++; }
-		var j = Math.floor(Math.random()*element_count);
-		for (var i in current_dict){
-			if (j == 0){
-				$('div.from_word').html('<span style="color:black">'+current_dict[i]+'</span>');
+		for (e in current_dict) {
+			element_count++;
+		}
+		var j = Math.floor(Math.random() * element_count);
+		for ( var i in current_dict) {
+			if (j == 0) {
+				$('div.from_word').html(
+						'<span style="color:black">' + current_dict[i]
+								+ '</span>');
 				return i;
 			}
-			j = j-1;
+			j = j - 1;
+		}
+	};
+
+	/**
+	 * Called on each submit.
+	 */
+	see_answer = function(guess) {
+		document.getElementById('guess').value = '';
+		update_first(actual,guess);
+		actual = random_word();
+		document.getElementById('guess').focus();
+	};
+
+	/**
+	 * Should be run once at page load.
+	 */
+	set_langs = function() {
+		$("h1:first").html(
+				'Translate from <span style="color:black">' + get_lang_from()
+						+ '</span> to <span style="color:black">'
+						+ get_lang_to() + '</span>');
+	};
+	
+	/**
+	 * Called once at page load.
+	 */
+	start = function() {
+		set_langs();
+		actual = random_word();
+		document.getElementById('guess').focus();
+	};
+	
+	/**
+	 * Updates the top entry for correctness.
+	 */
+	update_first = function(actual,guess){
+		update_rest();
+		if (actual == guess){
+			//correct
+			$('div.first_question').html(
+				'<span style="color:blue">'+current_dict[actual] + '</span>'
+			);
+			$('div.first_answer').html(
+					'<span style="color:blue">'+actual + '</span>'
+			);
+			$('div.first_correct').html(
+					'<span class="ui-icon ui-icon-check"></span>'
+			);
+		} else {
+			//incorrect
+			$('div.first_question').html(
+					'<span style="color:red">'+current_dict[actual] + '</span>'
+			);
+			$('div.first_answer').html(
+					'<span style="color:red; text-decoration:line-through;">'+guess + '</span>'
+			);
+			$('div.first_correct').html(
+					'<span style="color:red">'+actual+'</span>'
+			);
 		}
 	};
 	
-	see_answer = function(){
-		document.getElementById('guess').value = '';
-		random_word();
-		document.getElementById('guess').focus();
+	update_rest = function(){
+		rest = document.getElementById('rest').innerHTML;
+		// style first...
+		var styled_first = '<tr><td>'+document.getElementById('first_question').innerHTML+'</td>'+
+			'<td>'+document.getElementById('first_answer').innerHTML+'</td>' +
+			'<td>'+document.getElementById('first_correct').innerHTML+'</td></tr>';
+		rest = '<table>'+ styled_first + rest + '</table>';
+		$('div.rest').html(rest);
 	};
 
 });
