@@ -20,10 +20,17 @@ $(function() {
 		var j = Math.floor(Math.random()*element_count);
 		for (var i in current_dict){
 			if (j == 0){
-				return current_dict[i];
+				$('div.from_word').html('<span style="color:black">'+current_dict[i]+'</span>');
+				return i;
 			}
 			j = j-1;
 		}
+	};
+	
+	see_answer = function(){
+		document.getElementById('guess').value = '';
+		random_word();
+		document.getElementById('guess').focus();
 	};
 
 });
