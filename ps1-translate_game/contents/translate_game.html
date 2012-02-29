@@ -29,6 +29,12 @@
   					'</span> to <span style="color:black">'+get_lang_to()+'</span>');
     			}
     		);
+    		
+    		$(document).ready(function()
+        			{
+    					document.getElementById('guess').focus()
+        			}
+        		);
     	</script>
     </div>
     
@@ -58,7 +64,7 @@
     				</div>
     			</td>
     			<td>
-    				<input type="text" size="8">
+    				<input id="guess" type="text" size="8">
     			</td>
     			<td>
     				<button type="button">See Answer</button>
