@@ -52,7 +52,17 @@
     				</div>
     			</td>
     			<td>
-    				<input id="guess" type="text" size="8">
+    			<script>
+					$(function() {
+						$("input").autocomplete({
+							source: keys,
+							minLength: 2,
+						});
+					});
+				</script>
+    				<div class="ui-widget" >
+  						<input id="guess" type="text" size="12" />
+    				</div>
     			</td>
     			<td>
     				<button onclick="see_answer(document.getElementById('guess').value)" 

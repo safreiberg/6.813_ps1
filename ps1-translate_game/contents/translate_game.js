@@ -8,6 +8,17 @@ $(function() {
 	var current_dict = dicts[lang_to][lang_from]; // keys: words in @lang_to,
 	// values: corresponding
 	// words in @lang_from
+	
+	var element_count = 0;
+	for (e in current_dict) {
+		element_count++;
+	}
+	
+	keys = [];
+	
+	for (var i in current_dict) {
+		keys.push(i);	
+	}
 
 	/**
 	 * Getters for lang_to and lang_from
@@ -20,10 +31,6 @@ $(function() {
 	};
 
 	random_word = function() {
-		var element_count = 0;
-		for (e in current_dict) {
-			element_count++;
-		}
 		var j = Math.floor(Math.random() * element_count);
 		for ( var i in current_dict) {
 			if (j == 0) {
@@ -104,5 +111,6 @@ $(function() {
 		rest = '<table>'+ styled_first + rest + '</table>';
 		$('div.rest').html(rest);
 	};
+	
 
 });

@@ -23,22 +23,24 @@ h2 {
 }
 
 td {
-	width:350px;
+	width: 350px;
 	font-size: 40px;
 	margin-right: 10px;
 }
 
-input[type=text]{
-	font-size:40px;
+input[type=text] {
+	font-size: 40px;
 	margin-right: 10px;
 }
 
-button[type=button]{
-	font-size:30px;
+button[type=button] {
+	font-size: 30px;
 	height: 55px;
 	width: 200px;
 }
 
-from_word{
-	color:black;
+from_word {
+	color: black;
 }
+
+.ui-autocomplete { font-size: 30px;}
