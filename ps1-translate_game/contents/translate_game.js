@@ -47,6 +47,7 @@ $(function() {
 	 * Called on each submit.
 	 */
 	see_answer = function(guess) {
+		$("#guess").autocomplete("close");
 		update_first(actual, guess);
 		actual = random_word();
 		document.getElementById('guess').focus();
@@ -134,5 +135,17 @@ $(function() {
 		rest = '<table>' + styled_first + rest + '</table>';
 		$('div.rest').html(rest);
 	};
+	
+	$(function() {
+		$("input").autocomplete({
+			source: keys,
+			minLength: 2,
+			select: function(event,ui){
+				document.getElementById('guess').value = ui.item.value;
+				document.getElementById('submit_button').click();
+				return false;
+			}
+		});
+	});
 
 });

@@ -49,20 +49,7 @@
     				<div id="from_word" class="from_word">
     				</div>
     			</td>
-				<td>
-				<script>
-				$(function() {
-					$("input").autocomplete({
-						source: keys,
-						minLength: 2,
-						select: function(event,ui){
-							document.getElementById('guess').value = ui.item.value;
-							document.getElementById('submit_button').click();
-							return false;
-						}
-					});
-				});
-				</script>	
+				<td>	
     				<div class="ui-widget" >
   						<input id="guess" onkeypress="handle_enter(this,event)"
   							type="text" name="guess" size="12" />
