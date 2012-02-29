@@ -23,7 +23,6 @@
     	<h1>
     	</h1>
     	<script>
-    				
     		$(document).ready(function()
         			{
     					start();
@@ -48,30 +47,30 @@
     		<tr>
     			<td>
     				<div id="from_word" class="from_word">
-    				
     				</div>
     			</td>
-    			<td>
-    			<script>
-					$(function() {
-						$("input").autocomplete({
-							source: keys,
-							minLength: 2,
-							select: function(event,ui){
-								document.getElementById('guess').value = ui.item.value;
-								see_answer(document.getElementById('guess').value);
-								return false;
-							}
-						});
+				<td>
+				<script>
+				$(function() {
+					$("input").autocomplete({
+						source: keys,
+						minLength: 2,
+						select: function(event,ui){
+							document.getElementById('guess').value = ui.item.value;
+							document.getElementById('submit_button').click();
+							return false;
+						}
 					});
-				</script>
+				});
+				</script>	
     				<div class="ui-widget" >
-  						<input id="guess" type="text" size="12" />
+  						<input id="guess" onkeypress="handle_enter(this,event)"
+  							type="text" name="guess" size="12" />
     				</div>
     			</td>
     			<td>
     				<button onclick="see_answer(document.getElementById('guess').value)" 
-    				id="submit_button" type="button">See Answer</button>
+    				id="submit_button" type="submit">See Answer</button>
     			</td>
     		</tr>
     			<td>

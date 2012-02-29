@@ -54,6 +54,29 @@ $(function() {
 	};
 
 	/**
+	 * Credit here:
+	 * http://www.tek-tips.com/viewthread.cfm?qid=1523454
+	 * For this stub.
+	 */
+	handle_enter = function(inField, e) {
+		var charCode = 0;
+
+		if (e && e.which) {
+			charCode = e.which;
+		} else if (window.event) {
+			e = window.event;
+			charCode = e.keyCode;
+		}
+
+		if (charCode == 13) {
+			if (document.getElementById('guess').value == ''){
+				return;
+			}
+			document.getElementById('submit_button').click();
+		}
+	};
+
+	/**
 	 * Should be run once at page load.
 	 */
 	set_langs = function() {

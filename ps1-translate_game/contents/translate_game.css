@@ -33,7 +33,7 @@ input[type=text] {
 	margin-right: 10px;
 }
 
-button[type=button] {
+button[type=submit] {
 	font-size: 30px;
 	height: 55px;
 	width: 200px;
