@@ -8,16 +8,16 @@ $(function() {
 	var current_dict = dicts[lang_to][lang_from]; // keys: words in @lang_to,
 	// values: corresponding
 	// words in @lang_from
-	
+
 	var element_count = 0;
 	for (e in current_dict) {
 		element_count++;
 	}
-	
+
 	keys = [];
-	
-	for (var i in current_dict) {
-		keys.push(i);	
+
+	for ( var i in current_dict) {
+		keys.push(i);
 	}
 
 	/**
@@ -47,10 +47,10 @@ $(function() {
 	 * Called on each submit.
 	 */
 	see_answer = function(guess) {
-		document.getElementById('guess').value = '';
-		update_first(actual,guess);
+		update_first(actual, guess);
 		actual = random_word();
 		document.getElementById('guess').focus();
+		$('#guess').val('');
 	};
 
 	/**
@@ -62,7 +62,7 @@ $(function() {
 						+ '</span> to <span style="color:black">'
 						+ get_lang_to() + '</span>');
 	};
-	
+
 	/**
 	 * Called once at page load.
 	 */
@@ -71,46 +71,45 @@ $(function() {
 		actual = random_word();
 		document.getElementById('guess').focus();
 	};
-	
+
 	/**
 	 * Updates the top entry for correctness.
 	 */
-	update_first = function(actual,guess){
+	update_first = function(actual, guess) {
 		update_rest();
-		if (actual == guess){
-			//correct
+		if (actual == guess) {
+			// correct
 			$('div.first_question').html(
-				'<span style="color:blue">'+current_dict[actual] + '</span>'
-			);
+					'<span style="color:blue">' + current_dict[actual]
+							+ '</span>');
 			$('div.first_answer').html(
-					'<span style="color:blue">'+actual + '</span>'
-			);
+					'<span style="color:blue">' + actual + '</span>');
 			$('div.first_correct').html(
-					'<span class="ui-icon ui-icon-check"></span>'
-			);
+					'<span class="ui-icon ui-icon-check"></span>');
 		} else {
-			//incorrect
+			// incorrect
 			$('div.first_question').html(
-					'<span style="color:red">'+current_dict[actual] + '</span>'
-			);
+					'<span style="color:red">' + current_dict[actual]
+							+ '</span>');
 			$('div.first_answer').html(
-					'<span style="color:red; text-decoration:line-through;">'+guess + '</span>'
-			);
+					'<span style="color:red; text-decoration:line-through;">'
+							+ guess + '</span>');
 			$('div.first_correct').html(
-					'<span style="color:red">'+actual+'</span>'
-			);
+					'<span style="color:red">' + actual + '</span>');
 		}
 	};
-	
-	update_rest = function(){
+
+	update_rest = function() {
 		rest = document.getElementById('rest').innerHTML;
 		// style first...
-		var styled_first = '<tr><td>'+document.getElementById('first_question').innerHTML+'</td>'+
-			'<td>'+document.getElementById('first_answer').innerHTML+'</td>' +
-			'<td>'+document.getElementById('first_correct').innerHTML+'</td></tr>';
-		rest = '<table>'+ styled_first + rest + '</table>';
+		var styled_first = '<tr><td>'
+				+ document.getElementById('first_question').innerHTML + '</td>'
+				+ '<td>' + document.getElementById('first_answer').innerHTML
+				+ '</td>' + '<td>'
+				+ document.getElementById('first_correct').innerHTML
+				+ '</td></tr>';
+		rest = '<table>' + styled_first + rest + '</table>';
 		$('div.rest').html(rest);
 	};
-	
 
 });

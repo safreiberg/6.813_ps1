@@ -43,4 +43,6 @@ from_word {
 	color: black;
 }
 
-.ui-autocomplete { font-size: 30px;}
+.ui-autocomplete {
+	font-size: 30px;
+}

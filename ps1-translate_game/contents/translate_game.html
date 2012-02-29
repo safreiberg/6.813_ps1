@@ -57,6 +57,11 @@
 						$("input").autocomplete({
 							source: keys,
 							minLength: 2,
+							select: function(event,ui){
+								document.getElementById('guess').value = ui.item.value;
+								see_answer(document.getElementById('guess').value);
+								return false;
+							}
 						});
 					});
 				</script>
