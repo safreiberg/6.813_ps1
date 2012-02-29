@@ -20,9 +20,16 @@
     <!-- Your HTML here -->
     
     <div>
-    <h1>
-	Translate from <span style="color:black">Spanish</span> to <span style="color:black">English</span>
-    </h1>
+    	<h1>
+    	</h1>
+    	<script>
+    		$(document).ready(function()
+    			{
+    				$("h1:first").html('Translate from <span style="color:black">'+get_lang_from()+
+  					'</span> to <span style="color:black">'+get_lang_to()+'</span>');
+    			}
+    		);
+    	</script>
     </div>
     
     <div>

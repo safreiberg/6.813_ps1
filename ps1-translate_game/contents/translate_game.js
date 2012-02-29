@@ -7,6 +7,11 @@ $(function() {
 													// values: corresponding
 													// words in @lang_from
 
-	// Your code here
+	get_lang_from = function(){
+		return lang_from;
+	};
+	get_lang_to = function(){
+		return lang_to;
+	};
 
 });
