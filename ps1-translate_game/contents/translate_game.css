@@ -1,5 +1,40 @@
 html {
-    background-color: #eee;
+	background-color: #eee;
+	margin-top: 25px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	margin-left: 50px;
+	font-family: sans-serif;
+	color: #808080;
 }
 
-/* Your CSS here */
+p {
+	margin: 5px;
+	padding: 5px;
+}
+
+h1 {
+	font-size: 80px;
+	margin-bottom: 40px;
+}
+
+h2 {
+	
+}
+
+td {
+	width:350px;
+	font-size: 40px;
+	margin-right: 10px;
+}
+
+input[type=text]{
+	font-size:40px;
+	margin-right: 10px;
+}
+
+button[type=button]{
+	font-size:30px;
+	height: 55px;
+	width: 200px;
+}
