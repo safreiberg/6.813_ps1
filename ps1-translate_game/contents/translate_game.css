@@ -26,11 +26,13 @@ td {
 
 .div-table-row {
 	display: table-row;
+	font-size: 40px;
 }
 
 .div-table-col {
 	display: table-cell;
 	padding: 10px;
+	font-size: 40px;
 }
 
 input[type=text] {
@@ -41,7 +43,6 @@ input[type=text] {
 button[type=submit] {
 	font-size: 30px;
 	height: 55px;
-	vertical-align: top;
 	width: 200px;
 }
 

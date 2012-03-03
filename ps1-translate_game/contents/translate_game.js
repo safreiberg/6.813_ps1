@@ -110,7 +110,7 @@ $(function() {
 							+ '</span>');
 			$('div.first_answer').html(
 					'<span style="color:blue">' + actual + '</span>');
-			$('div.first_correct').html( '&#x2713;');
+			$('div.first_correct').html( '<div class="check">&#x2713</div>');
 		} else {
 			// incorrect
 			$('div.first_question').html(
