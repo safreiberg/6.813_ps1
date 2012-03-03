@@ -8,24 +8,29 @@ html {
 	color: #808080;
 }
 
-p {
-	margin: 5px;
-	padding: 5px;
-}
-
 h1 {
 	font-size: 80px;
 	margin-bottom: 40px;
-}
-
-h2 {
-	
 }
 
 td {
 	width: 350px;
 	font-size: 40px;
 	margin-right: 10px;
+}
+
+.div-table {
+	display: table;
+	font-size: 40px;
+}
+
+.div-table-row {
+	display: table-row;
+}
+
+.div-table-col {
+	display: table-cell;
+	padding: 10px;
 }
 
 input[type=text] {
@@ -36,6 +41,7 @@ input[type=text] {
 button[type=submit] {
 	font-size: 30px;
 	height: 55px;
+	vertical-align: top;
 	width: 200px;
 }
 

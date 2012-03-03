@@ -85,6 +85,8 @@ $(function() {
 				'Translate from <span style="color:black">' + get_lang_from()
 						+ '</span> to <span style="color:black">'
 						+ get_lang_to() + '</span>');
+		$('#from_lang').html(lang_from);
+		$('#to_lang').html(lang_to);
 	};
 
 	/**
@@ -108,8 +110,7 @@ $(function() {
 							+ '</span>');
 			$('div.first_answer').html(
 					'<span style="color:blue">' + actual + '</span>');
-			$('div.first_correct').html(
-					'<span class="ui-icon ui-icon-check"></span>');
+			$('div.first_correct').html( '&#x2713;');
 		} else {
 			// incorrect
 			$('div.first_question').html(
@@ -124,16 +125,22 @@ $(function() {
 	};
 
 	update_rest = function() {
-		rest = document.getElementById('rest').innerHTML;
+		var rest1 = document.getElementById('rest_col1').innerHTML;
+		var rest2 = document.getElementById('rest_col2').innerHTML;
+		var rest3 = document.getElementById('rest_col3').innerHTML;
 		// style first...
-		var styled_first = '<tr><td>'
-				+ document.getElementById('first_question').innerHTML + '</td>'
-				+ '<td>' + document.getElementById('first_answer').innerHTML
-				+ '</td>' + '<td>'
-				+ document.getElementById('first_correct').innerHTML
-				+ '</td></tr>';
-		rest = '<table>' + styled_first + rest + '</table>';
-		$('div.rest').html(rest);
+		$('#rest_col1').html(document.getElementById('first_question').innerHTML + '<br />' + rest1);
+		$('#rest_col2').html(document.getElementById('first_answer').innerHTML + '<br />' + rest2);
+		$('#rest_col3').html(document.getElementById('first_correct').innerHTML + '<br />' + rest3);
+//		var styled_first = '<div class="div-table-row">'+
+//			'<div class="div-table-col">'
+//				+ document.getElementById('first_question').innerHTML + '<div>'
+//				+ '<div class="div-table-col">' + document.getElementById('first_answer').innerHTML
+//				+ '</div>' + '<div class="div-table-col">'
+//				+ document.getElementById('first_correct').innerHTML
+//				+ '</div></div>';
+//		rest = styled_first + rest;
+//		$('div.rest').html(rest);
 	};
 	
 	$(function() {

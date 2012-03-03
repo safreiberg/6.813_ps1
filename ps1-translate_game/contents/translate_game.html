@@ -20,7 +20,6 @@
   <body>
     <!-- Your HTML here -->
     
-    <div>
     	<h1>
     	</h1>
     	<script>
@@ -30,16 +29,16 @@
         			}
         		);
     	</script>
-    </div>
     
-    <div>
-    	<table>
+<!--     	<table>
     		<tr>
     			<td>
-    				Spanish
+    				<div id="from_lang">
+    				</div>
     			</td>
     			<td>
-    				English
+    				<div id="to_lang">
+    				</div>
     			</td>
     			<td>
     				Answer
@@ -61,10 +60,11 @@
     				id="submit_button" type="submit">See Answer</button>
     			</td>
     		</tr>
+    			
+    		<tr>
     			<td>
     				&nbsp;
     			</td>
-    		<tr>
     		</tr>
     		<tr>
     			<td>
@@ -77,11 +77,54 @@
 					<div id="first_correct" class="first_correct"></div>
     			</td>
     		</tr>
-    	</table>
+		    		<div id="rest" class="rest"></div>
+    	</table> -->
     	
-    	<div id="rest" class="rest"></div>
-    	
-    </div>
+    	<div class="div-table">
+    		<div class="div-table-row">
+    			<div class="div-table-col">
+    				<div id="from_lang">
+    						</div>
+    			</div>
+    			<div class="div-table-col">
+    				<div id="to_lang">
+    					</div>
+    			</div>
+    			<div class="div-table-col">
+    				Answer
+    			</div>
+			</div>
+			<div class="div-table-row">
+				<div class="div-table-col">
+					<div id="from_word" class="from_word">
+    					</div>
+				</div>
+    			<div class="div-table-col">
+    				<div class="ui-widget" >
+  						<input id="guess" onkeypress="handle_enter(this,event)"
+  							type="text" name="guess" size="12" />
+    					</div>
+				</div>
+				<div class="div-table-col">
+					<button onclick="see_answer(document.getElementById('guess').value)" 
+    					id="submit_button" type="submit">See Answer</button>
+				</div>
+			</div>
+			<div class="div-table-row">
+				<div class="div-table-col">
+					<div id="first_question" class="first_question"></div>
+					<div id="rest_col1" class="rest"></div>
+				</div>
+				<div class="div-table-col">
+					<div id="first_answer" class="first_answer"></div>
+					<div id="rest_col2" class="rest"></div>
+				</div>
+				<div class="div-table-col">
+					<div id="first_correct" class="first_correct"></div>
+					<div id="rest_col3" class="rest"></div>
+				</div>
+			</div>
+    	</div>
     
   </body>
 </html>
