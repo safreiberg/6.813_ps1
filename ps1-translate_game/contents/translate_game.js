@@ -4,7 +4,6 @@ $(function() {
 	var lang_to = "English";
 	var lang_from = "Spanish";
 	var actual;
-	var rest = '';
 	var current_dict = dicts[lang_to][lang_from]; // keys: words in @lang_to,
 	// values: corresponding
 	// words in @lang_from
@@ -71,7 +70,7 @@ $(function() {
 
 		if (charCode == 13) {
 			if (document.getElementById('guess').value == ''){
-				return;
+				document.getElementById('guess').value = '(no guess)';
 			}
 			document.getElementById('submit_button').click();
 		}
@@ -96,22 +95,15 @@ $(function() {
 		set_langs();
 		actual = random_word();
 		document.getElementById('guess').focus();
-	};
-	
-	start2 = function(){
-		actual = random_word();
-		document.getElementById('guess').focus();
-		paint();
-	};
-	
-	paint = function(){
-		
-	}
+	};		
 
 	/**
 	 * Updates the top entry for correctness.
 	 */
 	update_first = function(actual, guess) {
+		if (guess == ''){
+			guess = '(no guess)';
+		}
 		update_rest();
 		if (actual == guess) {
 			// correct
@@ -139,19 +131,9 @@ $(function() {
 		var rest1 = document.getElementById('rest_col1').innerHTML;
 		var rest2 = document.getElementById('rest_col2').innerHTML;
 		var rest3 = document.getElementById('rest_col3').innerHTML;
-		// style first...
 		$('#rest_col1').html(document.getElementById('first_question').innerHTML + '<br />' + rest1);
 		$('#rest_col2').html(document.getElementById('first_answer').innerHTML + '<br />' + rest2);
 		$('#rest_col3').html(document.getElementById('first_correct').innerHTML + '<br />' + rest3);
-//		var styled_first = '<div class="div-table-row">'+
-//			'<div class="div-table-col">'
-//				+ document.getElementById('first_question').innerHTML + '<div>'
-//				+ '<div class="div-table-col">' + document.getElementById('first_answer').innerHTML
-//				+ '</div>' + '<div class="div-table-col">'
-//				+ document.getElementById('first_correct').innerHTML
-//				+ '</div></div>';
-//		rest = styled_first + rest;
-//		$('div.rest').html(rest);
 	};
 	
 	$(function() {
@@ -160,7 +142,10 @@ $(function() {
 			minLength: 2,
 			select: function(event,ui){
 				document.getElementById('guess').value = ui.item.value;
-				document.getElementById('submit_button').click();
+				// chrome...
+				if (!$.browser.mozilla){
+					document.getElementById('submit_button').click();
+				}
 				return false;
 			}
 		});
