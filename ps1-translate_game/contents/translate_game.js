@@ -97,6 +97,16 @@ $(function() {
 		actual = random_word();
 		document.getElementById('guess').focus();
 	};
+	
+	start2 = function(){
+		actual = random_word();
+		document.getElementById('guess').focus();
+		paint();
+	};
+	
+	paint = function(){
+		
+	}
 
 	/**
 	 * Updates the top entry for correctness.
@@ -110,7 +120,8 @@ $(function() {
 							+ '</span>');
 			$('div.first_answer').html(
 					'<span style="color:blue">' + actual + '</span>');
-			$('div.first_correct').html( '<div class="check">&#x2713</div>');
+			$('div.first_correct').html( '<span style="font-size:20"> &#x2713 </span>' +
+					'<span style="visibility:hidden; font-color:#eeeeee; font-size:40;">A</span>');
 		} else {
 			// incorrect
 			$('div.first_question').html(
