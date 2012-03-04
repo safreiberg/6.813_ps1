@@ -54,9 +54,8 @@ $(function() {
 	};
 
 	/**
-	 * Credit here:
-	 * http://www.tek-tips.com/viewthread.cfm?qid=1523454
-	 * For this stub.
+	 * Credit here: http://www.tek-tips.com/viewthread.cfm?qid=1523454 For this
+	 * stub.
 	 */
 	handle_enter = function(inField, e) {
 		var charCode = 0;
@@ -69,8 +68,8 @@ $(function() {
 		}
 
 		if (charCode == 13) {
-			if (document.getElementById('guess').value == ''){
-				document.getElementById('guess').value = '(no guess)';
+			if (document.getElementById('guess').value == '') {
+				document.getElementById('guess').value = '<span style="visibility:hidden; font-color:#eeeeee; font-size:40;">A</span>';
 			}
 			document.getElementById('submit_button').click();
 		}
@@ -95,14 +94,14 @@ $(function() {
 		set_langs();
 		actual = random_word();
 		document.getElementById('guess').focus();
-	};		
+	};
 
 	/**
 	 * Updates the top entry for correctness.
 	 */
 	update_first = function(actual, guess) {
-		if (guess == ''){
-			guess = '(no guess)';
+		if (guess == '') {
+			guess = '<span style="visibility:hidden; font-color:#eeeeee; font-size:40;">A</span>';
 		}
 		update_rest();
 		if (actual == guess) {
@@ -112,8 +111,10 @@ $(function() {
 							+ '</span>');
 			$('div.first_answer').html(
 					'<span style="color:blue">' + actual + '</span>');
-			$('div.first_correct').html( '<span style="font-size:20"> &#x2713 </span>' +
-					'<span style="visibility:hidden; font-color:#eeeeee; font-size:40;">A</span>');
+			$('div.first_correct')
+					.html(
+							'<span style="font-size:20"> &#x2713 </span>'
+									+ '<span style="visibility:hidden; font-color:#eeeeee; font-size:40;">A</span>');
 		} else {
 			// incorrect
 			$('div.first_question').html(
@@ -131,19 +132,25 @@ $(function() {
 		var rest1 = document.getElementById('rest_col1').innerHTML;
 		var rest2 = document.getElementById('rest_col2').innerHTML;
 		var rest3 = document.getElementById('rest_col3').innerHTML;
-		$('#rest_col1').html(document.getElementById('first_question').innerHTML + '<br />' + rest1);
-		$('#rest_col2').html(document.getElementById('first_answer').innerHTML + '<br />' + rest2);
-		$('#rest_col3').html(document.getElementById('first_correct').innerHTML + '<br />' + rest3);
+		$('#rest_col1').html(
+				document.getElementById('first_question').innerHTML + '<br />'
+						+ rest1);
+		$('#rest_col2').html(
+				document.getElementById('first_answer').innerHTML + '<br />'
+						+ rest2);
+		$('#rest_col3').html(
+				document.getElementById('first_correct').innerHTML + '<br />'
+						+ rest3);
 	};
-	
+
 	$(function() {
 		$("input").autocomplete({
-			source: keys,
-			minLength: 2,
-			select: function(event,ui){
+			source : keys,
+			minLength : 2,
+			select : function(event, ui) {
 				document.getElementById('guess').value = ui.item.value;
 				// chrome...
-				if (!$.browser.mozilla){
+				if (!$.browser.mozilla || event.which == 1) {
 					document.getElementById('submit_button').click();
 				}
 				return false;
